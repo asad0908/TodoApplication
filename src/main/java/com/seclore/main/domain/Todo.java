@@ -3,17 +3,19 @@ package com.seclore.main.domain;
 public class Todo {
 	private int id;
 	private String title, desc, status;
+	boolean deleted;
 	
 	public Todo() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Todo(int id, String title, String desc, String status) {
+	public Todo(int id, String title, String desc, String status, boolean deleted) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.desc = desc;
 		this.status = status;
+		this.deleted = deleted;
 	}
 
 	public int getId() {
@@ -48,8 +50,17 @@ public class Todo {
 		this.status = status;
 	}
 
+	public boolean getIsDeleted() {
+		return deleted;
+	}
+
+	public void setIsDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
 	@Override
 	public String toString() {
-		return "Todo [id=" + id + ", title=" + title + ", desc=" + desc + ", status=" + status + "]";
+		return "Todo [id=" + id + ", title=" + title + ", desc=" + desc + ", status=" + status + ", deleted=" + deleted
+				+ "]";
 	}
 }
