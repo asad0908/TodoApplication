@@ -27,7 +27,7 @@ public class TodoRepository implements TodoRepositoryInterface {
 
 	@Override
 	public boolean editTodo(Todo todo) {
-		Object[] args = {todo.getTitle(), todo.getDescription(), todo.getStatus(), todo.getIsDeleted()};
+		Object[] args = {todo.getTitle(), todo.getDescription(), todo.getStatus(), todo.getIsDeleted(), todo.getId()};
 		int count = jdbcTemplate.update(EDIT_TODO, args);
 		return count > 0;
 	}

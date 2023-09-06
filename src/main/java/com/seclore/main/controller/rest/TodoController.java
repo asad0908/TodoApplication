@@ -7,10 +7,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.seclore.main.domain.Todo;
@@ -24,7 +26,7 @@ public class TodoController {
 	private TodoServiceInterface todoService;
 
 	@GetMapping("")
-	ResponseEntity<List<Todo>> getAllTodoByUserId(@RequestBody int userId) {
+	ResponseEntity<List<Todo>> getAllTodoByUserId(@RequestParam int userId) {
 		List<Todo> todoList = todoService.getTodoListByUserId(userId);
 		return new ResponseEntity<List<Todo>>(todoList,  HttpStatus.OK);
 	}
@@ -36,19 +38,20 @@ public class TodoController {
 	}
 
 	@GetMapping("/{id}")
-	ResponseEntity<Todo> getTodoById(@RequestBody int todoId) {
+	ResponseEntity<Todo> getTodoById(@PathVariable(name = "id") int todoId) {
 		Todo todo = todoService.getTodoById(todoId);
 		return new ResponseEntity<Todo>(todo, HttpStatus.OK);
 	}
 
 	@PutMapping("/{id}")
-	ResponseEntity<Boolean> updateTodoById(@RequestBody Todo todo) {
+	ResponseEntity<Boolean> updateTodoById(@RequestBody Todo todo, @PathVariable int id) {
+		todo.setId(id);
 		boolean success = todoService.editTodo(todo);
 		return new ResponseEntity<Boolean>(success, HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")
-	ResponseEntity<Boolean> deleteTodoById(@RequestBody int todoId) {
+	ResponseEntity<Boolean> deleteTodoById(@PathVariable(name = "id") int todoId) {
 		boolean success = todoService.deleteTodo(todoId);
 		return new ResponseEntity<Boolean>(success, HttpStatus.OK);
 	}
