@@ -16,9 +16,4 @@ public class UserTodoMappingService implements UserTodoMappingServiceInterface {
 		return userTodoMappingRepository.checkUserTodoMapping(userId, todoId);
 	}
 
-	@Override
-	public boolean createUserTodoMapping(int userId, int todoId) {
-		return userTodoMappingRepository.createUserTodoMapping(userId, todoId);
-	}
-
 }

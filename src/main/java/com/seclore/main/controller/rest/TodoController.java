@@ -27,15 +27,16 @@ public class TodoController {
 
 	@GetMapping("")
 	ResponseEntity<List<Todo>> getAllTodoByUserId(@RequestAttribute("userId") int userId) {
-		//TODO: Get todos only with deleted flag as false
 		List<Todo> todoList = todoService.getTodoListByUserId(userId);
 		return new ResponseEntity<List<Todo>>(todoList,  HttpStatus.OK);
 	}
 
 	@PostMapping("")
-	ResponseEntity<Boolean> createTodo(@RequestBody Todo todo, @RequestAttribute("userId") int userId) {
+	ResponseEntity<String> createTodo(@RequestBody Todo todo, @RequestAttribute("userId") int userId) {
 		boolean success = todoService.createTodo(todo, userId);
-		return new ResponseEntity<Boolean>(success, HttpStatus.CREATED);
+		if(success)
+			return new ResponseEntity<String>("Created a new todo!", HttpStatus.CREATED);
+		return new ResponseEntity<String>("Failed to create todo!", HttpStatus.NOT_MODIFIED);
 	}
 
 	@GetMapping("/{id}")
@@ -45,16 +46,20 @@ public class TodoController {
 	}
 
 	@PutMapping("/{id}")
-	ResponseEntity<Boolean> updateTodoById(@RequestBody Todo todo, @PathVariable int id) {
+	ResponseEntity<String> updateTodoById(@RequestBody Todo todo, @PathVariable int id) {
 		todo.setId(id);
 		boolean success = todoService.editTodo(todo);
-		return new ResponseEntity<Boolean>(success, HttpStatus.OK);
+		if(success)
+			return new ResponseEntity<String>("Edited todo!", HttpStatus.OK);
+		return new ResponseEntity<String>("Failed to edit todo!", HttpStatus.NOT_MODIFIED);
 	}
 
 	@DeleteMapping("/{id}")
-	ResponseEntity<Boolean> deleteTodoById(@PathVariable(name = "id") int todoId) {
+	ResponseEntity<String> deleteTodoById(@PathVariable(name = "id") int todoId) {
 		boolean success = todoService.deleteTodo(todoId);
-		return new ResponseEntity<Boolean>(success, HttpStatus.OK);
+		if(success)
+			return new ResponseEntity<String>("Deleted todo!", HttpStatus.OK);
+		return new ResponseEntity<String>("Failed to delete todo!", HttpStatus.NOT_MODIFIED);
 	}
 
 }
