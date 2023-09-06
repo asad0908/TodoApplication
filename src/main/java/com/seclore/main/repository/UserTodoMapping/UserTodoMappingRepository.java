@@ -24,7 +24,7 @@ public class UserTodoMappingRepository implements UserTodoMappingRepositoryInter
 	}
 
 	@Override
-	public boolean checkUserTodoMapping(int userId, int todoId) {
+	public boolean checkUserTodoMapping(String userId, String todoId) {
 		Object[] args = {userId, todoId};
 		int count = jdbcTemplate.queryForObject(GET_USER_TODO_MAPPING_COUNT, Integer.class, args);
 		return count > 0;

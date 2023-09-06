@@ -1,31 +1,24 @@
 package com.seclore.main.security;
 
 import java.util.Base64;
-import java.util.Collections;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.seclore.main.domain.User;
-import com.seclore.main.service.User.UserServiceInterface;
-import com.seclore.main.service.UserTodoMapping.UserTodoMappingServiceInterface;
 
 @Component
-public class UserTodoAuthenticationProvider {
-	@Autowired
-	private UserTodoMappingServiceInterface userTodoMappingService;
-	@Autowired
-	private UserServiceInterface userService;
+public class JWTUtil {
+//	@Autowired
+//	private UserTodoMappingServiceInterface userTodoMappingService;
+//	@Autowired
+//	private UserServiceInterface userService;
 	
 	@Value("${application.security.jwt.secret-key}")
 	private String secretKey;

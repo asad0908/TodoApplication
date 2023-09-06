@@ -12,7 +12,7 @@ public class UserTodoMappingService implements UserTodoMappingServiceInterface {
 	UserTodoMappingRepositoryInterface userTodoMappingRepository;
 
 	@Override
-	public boolean checkUserTodoMapping(int userId, int todoId) {
+	public boolean checkUserTodoMapping(String userId, String todoId) {
 		return userTodoMappingRepository.checkUserTodoMapping(userId, todoId);
 	}
 

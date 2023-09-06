@@ -5,13 +5,13 @@ import org.springframework.stereotype.Component;
 
 import com.seclore.main.domain.User;
 import com.seclore.main.repository.User.UserRepositoryInterface;
-import com.seclore.main.security.UserTodoAuthenticationProvider;
+import com.seclore.main.security.JWTUtil;
 
 @Component
 public class UserService implements UserServiceInterface {
 	@Autowired
-	private UserTodoAuthenticationProvider authenticationProvider;
-	
+	private JWTUtil jwtUtil;
+
 	@Autowired
 	UserRepositoryInterface userRepository;
 
@@ -21,25 +21,23 @@ public class UserService implements UserServiceInterface {
 	}
 
 	@Override
-	public boolean validateUser(String email, String password) {
-		User user = userRepository.getUserByEmail(email);
-		if(user != null) return user.getPassword() == password;
-		return false;
-	}
-
-	@Override
 	public User getUserById(int userId) {
 		return userRepository.getUserById(userId);
 	}
 
 	@Override
 	public String authenticateUserAndGetToken(User inputUser) {
-		//TODO improve this
-		boolean validateUser = validateUser(inputUser.getEmail(), inputUser.getPassword());
-		if(validateUser == false) return null;
-		User u = getUserById(inputUser.getId());
-		String userIdString = "" + u.getId();
-		String token = authenticationProvider.createToken(userIdString);
+
+		User user = userRepository.getUserByEmail(inputUser.getEmail());
+		String inputPassword = inputUser.getPassword();
+		if (user == null)
+			return null;
+
+		if (user.getPassword().equals(inputPassword) == false)
+			return null;
+
+		String userIdString = "" + user.getId();
+		String token = jwtUtil.createToken(userIdString);
 		return token;
 	}
 

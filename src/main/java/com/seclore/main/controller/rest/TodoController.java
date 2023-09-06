@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.seclore.main.domain.Todo;
@@ -26,14 +26,14 @@ public class TodoController {
 	private TodoServiceInterface todoService;
 
 	@GetMapping("")
-	ResponseEntity<List<Todo>> getAllTodoByUserId(@RequestParam int userId) {
+	ResponseEntity<List<Todo>> getAllTodoByUserId(@RequestAttribute("userId") int userId) {
 		List<Todo> todoList = todoService.getTodoListByUserId(userId);
 		return new ResponseEntity<List<Todo>>(todoList,  HttpStatus.OK);
 	}
 
 	@PostMapping("")
-	ResponseEntity<Boolean> createTodo(@RequestBody Todo todo) {
-		boolean success = todoService.createTodo(todo);
+	ResponseEntity<Boolean> createTodo(@RequestBody Todo todo, @RequestAttribute("userId") int userId) {
+		boolean success = todoService.createTodo(todo, userId);
 		return new ResponseEntity<Boolean>(success, HttpStatus.CREATED);
 	}
 

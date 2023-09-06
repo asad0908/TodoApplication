@@ -19,8 +19,9 @@ public class TodoService implements TodoServiceInterface {
 	UserTodoMappingRepositoryInterface userTodoMappingRepository;
 	
 	@Override
-	public boolean createTodo(Todo todo) {
+	public boolean createTodo(Todo todo, int userId) {
 		return todoRepository.createTodo(todo);
+		//TODO ADD mapping here
 	}
 
 	@Override
@@ -35,6 +36,7 @@ public class TodoService implements TodoServiceInterface {
 
 	@Override
 	public List<Todo> getTodoListByUserId(int userId) {
+		System.out.println("User id: (get user by id): " + userId);
 		return userTodoMappingRepository.getAllTodosByUserId(userId);
 	}
 

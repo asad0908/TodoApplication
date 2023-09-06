@@ -1,7 +1,6 @@
 package com.seclore.main.security;
 
 import java.io.IOException;
-import java.net.http.HttpHeaders;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -12,12 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.auth0.jwt.interfaces.Header;
+import com.seclore.main.service.UserTodoMapping.UserTodoMappingServiceInterface;
 
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	@Autowired
-	private UserTodoAuthenticationProvider authenticationProvider;
+	private JWTUtil jwtUtil;
+	@Autowired
+	private UserTodoMappingServiceInterface userTodoMappingService;
 	
 	public JwtAuthenticationFilter() {
 		System.out.println("JWT Filter called!");
@@ -26,6 +27,15 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
+		
+		String servletPath = request.getServletPath();
+		System.out.println("Servlet path: " + servletPath);
+		
+		if(servletPath.contains("api/user")) {
+			filterChain.doFilter(request, response);
+			return;
+		}
+		
 		String authHeader = request.getHeader("Authorization");
 		if(authHeader==null) {
 			response.sendError(0, "Token not found!");
@@ -33,6 +43,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		}
 			
 		String[] authElements = authHeader.split(" ");
+		System.out.println("Auth headers: " + authHeader );
 		if(authElements.length!=2 || authElements[0].equals("Bearer")==false) {
 			response.sendError(0, "Token is in invalid format!");
 			return;
@@ -40,15 +51,28 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			
 		
 		try {
-			int userId = authenticationProvider.validateToken(authElements[1]);
+			int userId = jwtUtil.validateToken(authElements[1]);
 			request.setAttribute("userId", userId);			
 		}catch(Exception e) {
 			response.sendError(0, "Invalid/Expired token\n"+e.getMessage());
 			return;
 		}
 
-				
+		String[] args = servletPath.split("/");
+		System.out.println(args.length);
+		if(args.length==4) {
+			//for specific id
+			String todoId = args[3];
+			Integer userId = (Integer) request.getAttribute("userId");
+			boolean success = userTodoMappingService.checkUserTodoMapping(userId.toString() , todoId);
+			System.out.println("Check called for: " + userId + " " + todoId + " " + success );
+			if(success == false) {
+				response.sendError(401, "Unauthorized operation token\n");
+				return;
+			}
 			
+			
+		}
 		
 		System.out.println("Request");
 		System.out.println(request);
