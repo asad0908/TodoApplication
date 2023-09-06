@@ -2,6 +2,7 @@ package com.seclore.main.controller.rest;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,34 +17,34 @@ import com.seclore.main.domain.Todo;
 @RequestMapping("/api/todo")
 public class TodoController {
 
-	@GetMapping("/todo")
+	@GetMapping("")
 	ResponseEntity<List<Todo>> getAllTodoByUserId() {
 
-		return null;
+		return new ResponseEntity<List<Todo>>( HttpStatus.OK);
 	}
 
-	@PostMapping("/todo")
-	ResponseEntity<List<Todo>> createTodo() {
+	@PostMapping("")
+	ResponseEntity<Boolean> createTodo() {
 
-		return null;
+		return new ResponseEntity<Boolean>( HttpStatus.OK);
 	}
 
-	@GetMapping("/todo/{id}")
-	ResponseEntity<List<Todo>> getTodoById() {
+	@GetMapping("/{id}")
+	ResponseEntity<Todo> getTodoById() {
 
-		return null;
+		return new ResponseEntity<Todo>( HttpStatus.OK);
 	}
 
-	@PutMapping("/todo/{id}")
-	ResponseEntity<List<Todo>> updateTodoById() {
+	@PutMapping("/{id}")
+	ResponseEntity<Boolean> updateTodoById() {
 
-		return null;
+		return new ResponseEntity<Boolean>( HttpStatus.OK);
 	}
 
-	@DeleteMapping("/todo/{id}")
-	ResponseEntity<List<Todo>> deleteTodoById() {
+	@DeleteMapping("/{id}")
+	ResponseEntity<Boolean> deleteTodoById() {
 
-		return null;
+		return new ResponseEntity<Boolean>( HttpStatus.OK);
 	}
 
 }
