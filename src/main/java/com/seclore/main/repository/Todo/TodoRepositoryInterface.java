@@ -1,4 +1,4 @@
-package com.seclore.main.repository;
+package com.seclore.main.repository.Todo;
 
 
 import com.seclore.main.domain.Todo;

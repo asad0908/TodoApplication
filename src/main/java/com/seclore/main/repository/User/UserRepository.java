@@ -1,11 +1,10 @@
-package com.seclore.main.repository;
+package com.seclore.main.repository.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.seclore.main.domain.User;
-import com.seclore.main.domain.UserRowMapper;
 
 @Component
 public class UserRepository implements UserRepositoryInterface {

@@ -1,11 +1,11 @@
-package com.seclore.main.repository;
+package com.seclore.main.repository.Todo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import com.seclore.main.domain.Todo;
-import com.seclore.main.domain.TodoRowMapper;
+
 
 @Component
 public class TodoRepository implements TodoRepositoryInterface {

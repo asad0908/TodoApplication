@@ -1,9 +1,11 @@
-package com.seclore.main.domain;
+package com.seclore.main.repository.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
+
+import com.seclore.main.domain.User;
 
 public class UserRowMapper implements RowMapper<User> {
 

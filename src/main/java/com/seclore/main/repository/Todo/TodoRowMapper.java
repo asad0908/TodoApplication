@@ -1,9 +1,12 @@
-package com.seclore.main.domain;
+package com.seclore.main.repository.Todo;
+
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
+
+import com.seclore.main.domain.Todo;
 
 public class TodoRowMapper implements RowMapper<Todo> {
 
