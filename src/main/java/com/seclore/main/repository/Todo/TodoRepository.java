@@ -20,14 +20,14 @@ public class TodoRepository implements TodoRepositoryInterface {
 
 	@Override
 	public boolean createTodo(Todo todo) {
-		Object[] args = {todo.getTitle(), todo.getDesc(), todo.getStatus(), todo.getIsDeleted()};
+		Object[] args = {todo.getTitle(), todo.getDescription(), todo.getStatus(), todo.getIsDeleted()};
 		int count = jdbcTemplate.update(CREATE_TODO, args);
 		return count > 0;
 	}
 
 	@Override
 	public boolean editTodo(Todo todo) {
-		Object[] args = {todo.getTitle(), todo.getDesc(), todo.getStatus(), todo.getIsDeleted()};
+		Object[] args = {todo.getTitle(), todo.getDescription(), todo.getStatus(), todo.getIsDeleted()};
 		int count = jdbcTemplate.update(EDIT_TODO, args);
 		return count > 0;
 	}

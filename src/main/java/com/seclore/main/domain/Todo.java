@@ -2,18 +2,18 @@ package com.seclore.main.domain;
 
 public class Todo {
 	private int id;
-	private String title, desc, status;
+	private String title, description, status;
 	boolean deleted;
 	
 	public Todo() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Todo(int id, String title, String desc, String status, boolean deleted) {
+	public Todo(int id, String title, String description, String status, boolean deleted) {
 		super();
 		this.id = id;
 		this.title = title;
-		this.desc = desc;
+		this.description = description;
 		this.status = status;
 		this.deleted = deleted;
 	}
@@ -34,12 +34,12 @@ public class Todo {
 		this.title = title;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getStatus() {
@@ -60,7 +60,7 @@ public class Todo {
 
 	@Override
 	public String toString() {
-		return "Todo [id=" + id + ", title=" + title + ", desc=" + desc + ", status=" + status + ", deleted=" + deleted
+		return "Todo [id=" + id + ", title=" + title + ", description=" + description + ", status=" + status + ", deleted=" + deleted
 				+ "]";
 	}
 }
