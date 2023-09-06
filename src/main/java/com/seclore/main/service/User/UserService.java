@@ -5,9 +5,12 @@ import org.springframework.stereotype.Component;
 
 import com.seclore.main.domain.User;
 import com.seclore.main.repository.User.UserRepositoryInterface;
+import com.seclore.main.security.UserTodoAuthenticationProvider;
 
 @Component
 public class UserService implements UserServiceInterface {
+	@Autowired
+	private UserTodoAuthenticationProvider authenticationProvider;
 	
 	@Autowired
 	UserRepositoryInterface userRepository;
@@ -27,6 +30,17 @@ public class UserService implements UserServiceInterface {
 	@Override
 	public User getUserById(int userId) {
 		return userRepository.getUserById(userId);
+	}
+
+	@Override
+	public String authenticateUserAndGetToken(User inputUser) {
+		//TODO improve this
+		boolean validateUser = validateUser(inputUser.getEmail(), inputUser.getPassword());
+		if(validateUser == false) return null;
+		User u = getUserById(inputUser.getId());
+		String userIdString = "" + u.getId();
+		String token = authenticationProvider.createToken(userIdString);
+		return token;
 	}
 
 }

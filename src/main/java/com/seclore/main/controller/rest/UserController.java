@@ -18,7 +18,7 @@ public class UserController {
 	@Autowired
 	private UserServiceInterface userService;
 
-	@GetMapping("/")
+	@PostMapping("/")
 	ResponseEntity<String> createUser(@RequestBody User user) {
 		boolean success = userService.createUser(user);
 		if(success) return new ResponseEntity<String>("User Created!", HttpStatus.CREATED);
@@ -27,7 +27,7 @@ public class UserController {
 
 	@PostMapping("/login")
 	ResponseEntity<String> loginUser(@RequestBody User user) {
-//		boolean success = userService(user);
+		String token = userService.authenticateUserAndGetToken(user);
 		// TODO return token
 //		if() return new ResponseEntity<String>("User Created!", HttpStatus.CREATED);
 		return new ResponseEntity<String>("Failed to create user!", HttpStatus.BAD_REQUEST);

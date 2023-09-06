@@ -6,4 +6,5 @@ public interface UserServiceInterface {
 	public boolean createUser(User user);
 	public boolean validateUser(String email, String password);
 	public User getUserById(int userId);
+	public String authenticateUserAndGetToken(User user);
 }

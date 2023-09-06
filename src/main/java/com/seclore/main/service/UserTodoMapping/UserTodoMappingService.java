@@ -1,9 +1,11 @@
 package com.seclore.main.service.UserTodoMapping;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.seclore.main.repository.UserTodoMapping.UserTodoMappingRepositoryInterface;
 
+@Component
 public class UserTodoMappingService implements UserTodoMappingServiceInterface {
 	
 	@Autowired
