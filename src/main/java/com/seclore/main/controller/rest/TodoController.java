@@ -27,6 +27,7 @@ public class TodoController {
 
 	@GetMapping("")
 	ResponseEntity<List<Todo>> getAllTodoByUserId(@RequestAttribute("userId") int userId) {
+		//TODO: Get todos only with deleted flag as false
 		List<Todo> todoList = todoService.getTodoListByUserId(userId);
 		return new ResponseEntity<List<Todo>>(todoList,  HttpStatus.OK);
 	}

@@ -12,8 +12,9 @@ import com.seclore.main.repository.Todo.TodoRowMapper;
 @Component
 public class UserTodoMappingRepository implements UserTodoMappingRepositoryInterface {
 	
-	private static final String GET_ALL_TODOS_BY_USERID = "SELECT t.* FROM todo t, usertodomapping u WHERE t.id = u.todo_id and u.user_id=?";
+	private static final String GET_ALL_TODOS_BY_USERID = "SELECT t.* FROM todo t, usertodomapping u WHERE t.id = u.todo_id and u.user_id=? and t.deleted = false";
 	private static final String GET_USER_TODO_MAPPING_COUNT = "SELECT count(*) FROM usertodomapping where user_id=? AND todo_id=?";
+	private static final String CREATE_USER_TODO_MAPPING = "INSERT INTO usertodomapping(user_id, todo_id) VALUES (?, ?)";
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -27,6 +28,13 @@ public class UserTodoMappingRepository implements UserTodoMappingRepositoryInter
 	public boolean checkUserTodoMapping(String userId, String todoId) {
 		Object[] args = {userId, todoId};
 		int count = jdbcTemplate.queryForObject(GET_USER_TODO_MAPPING_COUNT, Integer.class, args);
+		return count > 0;
+	}
+
+	@Override
+	public boolean createUserTodoMapping(int userId, int todoId) {
+		Object[] args = {userId, todoId};
+		int count = jdbcTemplate.update(CREATE_USER_TODO_MAPPING, args);
 		return count > 0;
 	}
 

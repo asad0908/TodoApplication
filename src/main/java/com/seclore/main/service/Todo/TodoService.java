@@ -20,8 +20,11 @@ public class TodoService implements TodoServiceInterface {
 	
 	@Override
 	public boolean createTodo(Todo todo, int userId) {
-		return todoRepository.createTodo(todo);
-		//TODO ADD mapping here
+		boolean todoInserted = todoRepository.createTodo(todo);
+		if(!todoInserted) return false;
+		int todoId = todoRepository.getLastInsertedTodoId();
+		if(todoId <= 0) return false;
+		return userTodoMappingRepository.createUserTodoMapping(userId, todoId);
 	}
 
 	@Override

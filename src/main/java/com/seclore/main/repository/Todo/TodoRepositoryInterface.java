@@ -8,4 +8,5 @@ public interface TodoRepositoryInterface {
 	public boolean editTodo(Todo todo);
 	public boolean deleteTodo(int todoId);
 	public Todo getTodoById(int todoId);
+	public int getLastInsertedTodoId();
 }

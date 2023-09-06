@@ -14,6 +14,7 @@ public class TodoRepository implements TodoRepositoryInterface {
 	private static final String EDIT_TODO = "UPDATE todo SET title=?, description=?, status=?, deleted=? WHERE id=?";
 	private static final String DELETE_TODO = "update todo SET deleted=true WHERE id=?";
 	private static final String GET_TODO_BY_ID = "SELECT * FROM todo WHERE id=?";
+	private static final String GET_LAST_INSERTED_TODO_ID = "SELECT id FROM todo ORDER BY id DESC LIMIT 1";
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
@@ -41,6 +42,11 @@ public class TodoRepository implements TodoRepositoryInterface {
 	@Override
 	public Todo getTodoById(int todoId) {
 		return jdbcTemplate.queryForObject(GET_TODO_BY_ID, new TodoRowMapper(), todoId);
+	}
+
+	@Override
+	public int getLastInsertedTodoId() {
+		return jdbcTemplate.queryForObject(GET_LAST_INSERTED_TODO_ID, Integer.class);
 	}
 
 }

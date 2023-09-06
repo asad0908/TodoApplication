@@ -17,7 +17,7 @@ public class UserController {
 	@Autowired
 	private UserServiceInterface userService;
 
-	@PostMapping("/")
+	@PostMapping("")
 	ResponseEntity<String> createUser(@RequestBody User user) {
 		boolean success = userService.createUser(user);
 		if(success) return new ResponseEntity<String>("User Created!", HttpStatus.CREATED);
