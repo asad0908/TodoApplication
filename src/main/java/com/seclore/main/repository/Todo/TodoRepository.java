@@ -12,7 +12,7 @@ public class TodoRepository implements TodoRepositoryInterface {
 	
 	private static final String CREATE_TODO = "INSERT INTO todo(title, description, status, deleted) VALUES (?, ?, ?, ?)";
 	private static final String EDIT_TODO = "UPDATE todo SET title=?, description=?, status=?, deleted=? WHERE id=?";
-	private static final String DELETE_TODO = "update todo SET deleted=true WHERE id=?";
+	private static final String DELETE_TODO = "update todo SET deleted=true WHERE id=? and deleted=false";
 	private static final String GET_TODO_BY_ID = "SELECT * FROM todo WHERE id=?";
 	private static final String GET_LAST_INSERTED_TODO_ID = "SELECT id FROM todo ORDER BY id DESC LIMIT 1";
 	

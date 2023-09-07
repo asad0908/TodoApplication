@@ -9,40 +9,37 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/view")
 public class ViewController {
 
-	@GetMapping("")
-	ModelAndView loadHomePage() {
+	@RequestMapping("")
+	String loadHomePage() {
+		
 		System.out.println("A");
-		return new ModelAndView("index.jsp");
+		return "index";
 	}
 
-	@GetMapping("/login")
+	@RequestMapping("/login")
 	ModelAndView loadLoginPage() {
-		System.out.println("B");
-		return new ModelAndView("index");
+		return new ModelAndView("login");
 	}
 
 	@GetMapping("/signup")
 	ModelAndView loadSignUpPage() {
 		System.out.println("C");
-		return new ModelAndView("/WEB_INF/views/index.jsp");
+		return new ModelAndView("signup");
 	}
 
 	@GetMapping("/dashboard")
 	ModelAndView loadUserDashboardPage() {
-
-		return null;
+		return new ModelAndView("dashboard");
 	}
 
 	@GetMapping("/todo/edit")
 	ModelAndView loadEditTodoPage() {
-
-		return null;
+		return new ModelAndView("edittodo");
 	}
 
 	@GetMapping("/todo/new")
 	ModelAndView loadCreateTodoPage() {
-
-		return null;
+		return new ModelAndView("createtodo");
 	}
 
 }
