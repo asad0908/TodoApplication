@@ -11,20 +11,20 @@ public class ViewController {
 
 	@GetMapping("")
 	ModelAndView loadHomePage() {
-
-		return null;
+		System.out.println("A");
+		return new ModelAndView("index.jsp");
 	}
 
 	@GetMapping("/login")
 	ModelAndView loadLoginPage() {
-
-		return null;
+		System.out.println("B");
+		return new ModelAndView("index");
 	}
 
 	@GetMapping("/signup")
 	ModelAndView loadSignUpPage() {
-
-		return null;
+		System.out.println("C");
+		return new ModelAndView("/WEB_INF/views/index.jsp");
 	}
 
 	@GetMapping("/dashboard")

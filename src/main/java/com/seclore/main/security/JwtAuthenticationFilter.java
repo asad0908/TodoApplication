@@ -36,16 +36,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			return;
 		}
 		
+		if(servletPath.contains("/view")) {
+			filterChain.doFilter(request, response);
+			return;
+		}
+		
 		String authHeader = request.getHeader("Authorization");
 		if(authHeader==null) {
-			response.sendError(0, "Token not found!");
+			response.sendError(401, "Token not found!");
 			return;
 		}
 			
 		String[] authElements = authHeader.split(" ");
 		System.out.println("Auth headers: " + authHeader );
 		if(authElements.length!=2 || authElements[0].equals("Bearer")==false) {
-			response.sendError(0, "Token is in invalid format!");
+			response.sendError(401, "Token is in invalid format!");
 			return;
 		}
 			
@@ -54,7 +59,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			int userId = jwtUtil.validateToken(authElements[1]);
 			request.setAttribute("userId", userId);			
 		}catch(Exception e) {
-			response.sendError(0, "Invalid/Expired token\n"+e.getMessage());
+			response.sendError(401, "Invalid/Expired token\n"+e.getMessage());
 			return;
 		}
 
