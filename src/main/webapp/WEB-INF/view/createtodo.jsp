@@ -90,7 +90,7 @@
         <h1>Create Todo</h1>
     </header>
     <div class="container">
-        <form action="/api/todo" method="post">
+        <form id="createTodoForm" >
             <div class="form-group">
                 <label for="title">Title:</label>
                 <input type="text" id="title" name="title">
@@ -113,6 +113,46 @@
         </form>
     </div>
 
-    <!-- Include any necessary JavaScript scripts here -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+	    function getToken() {
+	        var authToken = localStorage.getItem("authToken");
+	        console.log("Token:",authToken);
+	        return authToken;
+	    }
+	      
+        $("#createTodoForm").submit(function(event) {
+            event.preventDefault();
+
+            var authToken = getToken();
+
+            if (!authToken) {
+                console.error("Token not available.");
+                return;
+            }
+
+            var formData = {
+                title: $("#title").val(),
+                description: $("#description").val(),
+                status: $("#status").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8080/api/todo",
+                data: JSON.stringify(formData), 
+                contentType: "application/json",
+                headers: {
+                    "Authorization": "Bearer " + authToken
+                },
+                success: function(response) {
+                    console.log("Todo created successfully.");
+                    window.location.href = "http://localhost:8080/view/dashboard";                },
+                error: function(err) {
+                    console.error("Error creating todo:", err);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

@@ -80,7 +80,7 @@
 </head>
 <body>
 <div class="card">
-  <img src="\logo.png" alt="Logo" class="logo">
+  <img src="/logo.png" alt="Logo" class="logo">
   <div class="card-content">
     <h1>Welcome to Todo Application</h1>
     <a href="/view/login"><i class="material-icons">account_circle</i> Login</a>

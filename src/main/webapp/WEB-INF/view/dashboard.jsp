@@ -65,6 +65,21 @@
         .delete-btn:hover {
             background-color: #d32f2f;
         }
+        .create-btn {
+	        background-color: #4CAF50;
+	        color: #fff;
+	        border: none;
+	        padding: 10px 20px;
+	        cursor: pointer;
+	        border-radius: 4px;
+	        float: right; 
+	        margin-top: 30px; 
+	        text-decoration: none; 
+    	}
+
+   		 .create-btn:hover {
+        	background-color: #45a049;
+    	}
     </style>
 </head>
 <body>
@@ -81,13 +96,14 @@
                 <th colspan="2">Action</th>
             </tr>
         </table>
+        <a class="create-btn" href="/view/todo/new">Create New Todo</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function getToken() {
             var authToken = localStorage.getItem("authToken");
-            console.log(authToken);
+            console.log("Token:",authToken);
             return authToken;
         }
 
