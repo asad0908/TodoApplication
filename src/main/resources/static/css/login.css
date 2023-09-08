@@ -1,75 +1,143 @@
-body {
-	font-family: 'Roboto', sans-serif;
-	background-color: #f5f5f5;
+*{
+	margin: 0;
+	padding: 0;
+}
+
+
+.loginpage__container{
+	font-family: 'Poppins', sans-serif;
+	background: linear-gradient(-225deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-	margin: 0;
+	width: 100%;
 }
 
-.card {
-	background-color: #fff;
-	border-radius: 4px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-	padding: 20px;
+.loginpage__card{
+	width: 35%;
+	height: 70%;
+	background-color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.loginpage__card--heading{
+	width: 100%;
+	height: 20%;
+	background-color: blue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.loginpage__card--heading h1{
+	color: #fff;
+}
+
+.loginpage__card--body{
+	width: 90%;
+	height: 80%;
+}
+
+.loginpage__card--input{
+	display: flex;
+	width: 100%;
+	height: 5%;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 5px;
+	margin-top: 30px;
+}
+
+.loginpage__card--input-icon{
+	width: 25%;
+	background-color: blue;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.loginpage__card--input input{
+	width: 100%;
+	height: 6vh;
+	border: 1px solid #888;
+	padding-left: 10px;
+	outline: 0;	
+	color: blue;
+	font-family: 'Poppins', sans-serif;
+}
+
+.loginpage__card--input input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: blue;
+  opacity: 0.5;
+}
+
+.loginpage__card--input input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: blue;
+}
+
+.loginpage__card--input input::-ms-input-placeholder { /* Microsoft Edge */
+  color: blue;
+}
+
+.loginpage__card--input-icon img{
+	width: 50%;
+	transform: scale(0.7);
+	filter: invert(1);
+}
+
+.loginpage__card--forgotpass{
+	margin-top: 20px;
+}
+
+.loginpage__card--forgotpass p{
+	cursor: pointer;
+	font-size: 14px;
+	width: 35%;
+	color: blue;
+}
+
+.loginpage__card--loginbutton{
+	margin-top: 30px;
+	width: 100%;
+}
+
+.loginpage__card--loginbutton button{
+	width: 100%;
+	padding: 10px 5px;
+	cursor: pointer;
+	font-family: 'Poppins', sans-serif;
+	outline: 0;
+	border: 0;
+	background-color: blue;
+	color: #fff;
+	font-weight: bold;
+	transition: box-shadow 0.3s ease;
+}
+
+.loginpage__card--loginbutton button:hover {
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5); /* Add a box shadow to the bottom only */
+}
+
+.loginpage__card--signup{
+	margin-top: 20px;
 	text-align: center;
+	width: 100%;
 }
 
-.card-content {
-	padding: 20px;
-}
-
-.card h1 {
-	color: #333;
-	font-size: 28px;
-	margin-bottom: 20px;
-}
-
-.card-form {
-	text-align: left;
-}
-
-.form-group {
-	margin-bottom: 20px;
-}
-
-.form-group label {
-	display: block;
-	color: #666;
+.loginpage__card--signup p{
 	font-size: 14px;
 }
 
-.form-group input[type="text"],
-.form-group input[type="password"] {
-	width: 100%;
-	padding: 10px;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	font-size: 16px;
-}
-
-.form-group input[type="text"]:focus,
-.form-group input[type="password"]:focus {
-	outline: none;
-	border-color: #2196F3;
-}
-
-.form-button {
-	background-color: #2196F3;
-	color: #fff;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 4px;
-	font-size: 18px;
+.loginpage__card--signup span{
+	color: blue;
+	font-weight: bold;
 	cursor: pointer;
 }
 
-.form-button:hover {
-	background-color: #1976D2;
-}
-
-.logo {
-	max-width: 150px;
-	margin-bottom: 20px;
+.loginpage__card--signup span a{
+	text-decoration: none;
 }

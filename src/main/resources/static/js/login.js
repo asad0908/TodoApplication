@@ -1,3 +1,4 @@
+console.log("Script applied from js page")
 $(document).ready(function() {
 	$("#loginForm").submit(function(event) {
 		event.preventDefault();

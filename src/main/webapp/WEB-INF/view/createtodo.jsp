@@ -5,13 +5,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Create Todo</title>
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/css/createtodo.css">
 </head>
 <body>
+	<div class="createtodo">
 	<header>
 		<h1>Create Todo</h1>
 	</header>
@@ -33,10 +35,11 @@
 					<option value="Completed">Completed</option>
 				</select>
 			</div>
-			<div class="form-group">
+			<div class="createtodo__submit">
 				<input type="submit" class="form-button" value="Save">
 			</div>
 		</form>
+	</div>
 	</div>
 
 	<!-- Include any necessary JavaScript scripts here -->
