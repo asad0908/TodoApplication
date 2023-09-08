@@ -31,6 +31,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 		String servletPath = request.getServletPath();
 		System.out.println("Servlet path: " + servletPath);
 		
+		if(servletPath.contains(".css")) {
+			filterChain.doFilter(request, response);
+			return;
+		}
+		
 		if(servletPath.contains("api/user")) {
 			filterChain.doFilter(request, response);
 			return;
@@ -65,7 +70,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 		String[] args = servletPath.split("/");
 		System.out.println(args.length);
-		if(args.length==4) {
+		if(args.length==4 && args[1].equals("api")) {
 			//for specific id
 			String todoId = args[3];
 			Integer userId = (Integer) request.getAttribute("userId");
