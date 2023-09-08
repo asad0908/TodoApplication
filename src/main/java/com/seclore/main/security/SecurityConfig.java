@@ -42,7 +42,7 @@ public class SecurityConfig {
 //		.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
 //		.and()
 		.authorizeHttpRequests()
-		.antMatchers("/api/user/**", "**.css")
+		.antMatchers("/api/user/**", "**.css", "**.js")
 			.permitAll();
 //		.anyRequest()
 //			.authenticated()

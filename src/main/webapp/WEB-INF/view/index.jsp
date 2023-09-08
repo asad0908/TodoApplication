@@ -7,11 +7,11 @@
 <title>Todo Application</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="/css/index.css">
 </head>
 <body>
 <div class="card">
-  <img src="\logo.png" alt="Logo" class="logo">
+  <img src="static/logo.png" alt="Logo" class="logo">
   <div class="card-content">
     <h1>Welcome to Todo Application</h1>
     <a href="/view/login"><i class="material-icons">account_circle</i> Login</a>

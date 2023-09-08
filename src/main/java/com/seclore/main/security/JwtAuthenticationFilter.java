@@ -36,6 +36,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			return;
 		}
 		
+		if(servletPath.contains(".js")) {
+			filterChain.doFilter(request, response);
+			return;
+		}
+		
 		if(servletPath.contains("api/user")) {
 			filterChain.doFilter(request, response);
 			return;
