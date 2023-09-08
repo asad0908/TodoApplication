@@ -1,68 +1,69 @@
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f5f5f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-  }
+* {
+	margin: 0;
+	padding: 0;
+}
 
-  .card {
-    background-color: #fff;
-    background-image: url('your-background-image.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    text-align: center;
-  }
+.homepage__container {
+	font-family: 'Poppins', sans-serif;
+	background: linear-gradient(-225deg, #AC32E4 0%, #7918F2 48%, #4801FF 100%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+}
 
-  .card a {
-    text-decoration: none;
-    color: #2196F3;
-    font-size: 18px;
-    display: inline-block;
-    margin: 10px;
-    padding: 10px 20px;
-    border-radius: 4px;
-    border: 1px solid #2196F3;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
+.homepage__card {
+	width: 50vw;
+	height: 50vh;
+}
 
-  .card a::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background-color: rgba(33, 150, 243, 0.3);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s ease, height 0.3s ease;
-  }
+.homepage__card--t1 {
+	color: #fff;
+	opacity: 0.8;
+	text-align: center;
+}
 
-  .card a:hover::after {
-    width: 120%;
-    height: 120%;
-  }
+.homepage__card--t2 {
+	color: #fff;
+	text-align: center;
+}
 
-  .card a:hover {
-    background-color: #1976D2;
-    color: #fff;
-  }
+.homepage__card--options {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 30px;
+}
 
-  h1 {
-    color: #333;
-    font-size: 28px;
-    margin-bottom: 20px;
-  }
+.homepage__card--option1, .homepage__card--option2 {
+	flex: 0.4;
+	height: 30vh;
+	background: rgba(255, 255, 255, 0.35);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border-radius: 10px;
+	cursor: pointer;
+	transition: all 0.2s ease-out;
+	transition: all 0.2s ease-in;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
 
-  .logo {
-    max-width: 150px;
-    margin-bottom: 20px;
-  }
+.homepage__card--message{
+	margin-top: -10px;
+	color: #fff;
+}
+
+.homepage__card--icon{
+	transform: scale(0.5);
+}
+
+
+.homepage__card--option1:hover, .homepage__card--option2:hover{
+	transform: scale(1.05);
+}
