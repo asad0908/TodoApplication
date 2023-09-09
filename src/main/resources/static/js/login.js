@@ -20,7 +20,8 @@ $(document).ready(function() {
 				window.location.href = "http://localhost:8080/view/dashboard";
 			},
 			error: function(err) {
-				console.error("Login error", err);
+				console.error("Login error: my login faileed", err);
+				alert(err.responseText)	
 			}
 		});
 	});

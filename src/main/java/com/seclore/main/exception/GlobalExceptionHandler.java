@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(EmptyResultDataAccessException.class)
 	public ResponseEntity<String> emptyDataExceptionHandler(EmptyResultDataAccessException e) {
 		System.out.println("Empty data");
-		String message = "Record Not Found!";
+		String message = "No records found!";
 		return new ResponseEntity<String>(message, HttpStatus.NOT_FOUND);
 	}
 

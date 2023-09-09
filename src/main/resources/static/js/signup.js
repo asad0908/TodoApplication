@@ -24,15 +24,8 @@ $(document).ready(function() {
                     console.log("Data posted successfully:", response);
                     window.location.href = "http://localhost:8080/view/login";
                 },
-                error: function(jqXHR, textStatus, errorThrown) {
-    				alert(textStatus+errorThrown);
-    				//if (jqXHR.status === 409) {
-			      		//var errorMessage = 'Duplicate mobile number found.';
-			      		//alert(errorMessage);
-			    	//} else {
-						
-			      		//console.log('Error:', textStatus, errorThrown);
-			    //}
+                error: function(err) {
+    				alert(err.responseText)
 			  }
             });
         }
