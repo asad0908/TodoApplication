@@ -1,3 +1,7 @@
+if (localStorage.getItem("authToken") == null) {
+	window.location.href = "http://localhost:8080/view/login";
+}
+
 function getToken() {
 	var authToken = localStorage.getItem("authToken");
 	console.log(authToken);
@@ -42,42 +46,52 @@ function renderData(data) {
 		var cell5 = row.insertCell(4); // Edit Link
 		var cell6 = row.insertCell(5); // Delete Link
 
-		cell1.innerHTML = todo.id;
+		cell1.innerHTML = i+1;
 		cell2.innerHTML = todo.title;
 		cell3.innerHTML = todo.description;
 		cell4.innerHTML = todo.status;
-		cell5.innerHTML = "<a href='/view/todo/edit?id=" + todo.id + "'>Edit</a>";
+		cell5.innerHTML = "<a class=\"edit-btn\" href='/view/todo/edit?id=" + todo.id + "'>Edit</a>";
 
 		// Use the todo.id directly within the JavaScript code
 		cell6.innerHTML = "<button class=\"delete-btn\" data-id=\"" + todo.id + "\">Delete</button>";
 	}
 }
 
-getDataWithToken();
+
+
 
 
 $(document).ready(function() {
-	$(".delete-btn").click(function() {
-		var todoId = $(this).data("id");
-		var authToken = localStorage.getItem("authToken");
+    getDataWithToken();
+    
+    $(document).on("click", ".logout-btn", function(){
+		localStorage.removeItem("authToken");
+		window.location.href = "http://localhost:8080/view/login";
+	})
 
-		if (!authToken) {
-			console.error("Token not available.");
-			return;
-		}
+    // Use event delegation for the click event
+    $(document).on("click", ".delete-btn", function() {
+        var todoId = $(this).data("id");
+        var authToken = localStorage.getItem("authToken");
 
-		$.ajax({
-			type: "DELETE",
-			url: "/api/todo/" + todoId,
-			headers: {
-				"Authorization": "Bearer " + authToken
-			},
-			success: function(response) {
-				console.log("Todo deleted successfully.");
-			},
-			error: function(err) {
-				console.error("Error deleting todo:", err);
-			}
-		});
-	});
+        if (!authToken) {
+            console.error("Token not available.");
+            return;
+        }
+
+        $.ajax({
+            type: "DELETE",
+            url: "/api/todo/" + todoId,
+            headers: {
+                "Authorization": "Bearer " + authToken
+            },
+            success: function() {
+				window.location.href = "http://localhost:8080/view/dashboard";
+            },
+            error: function(err) {
+                console.error("Error deleting todo:", err);
+            }
+        });
+    });
 });
+

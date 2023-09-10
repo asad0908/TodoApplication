@@ -1,4 +1,8 @@
-console.log("Script applied from js page")
+if (localStorage.getItem("authToken") != null) {
+	window.location.href = "http://localhost:8080/view/dashboard";
+}
+
+
 $(document).ready(function() {
 	$("#loginForm").submit(function(event) {
 		event.preventDefault();
@@ -21,7 +25,7 @@ $(document).ready(function() {
 			},
 			error: function(err) {
 				console.error("Login error: my login faileed", err);
-				alert(err.responseText)	
+				alert(err.responseText)
 			}
 		});
 	});

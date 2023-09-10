@@ -1,3 +1,7 @@
+if (localStorage.getItem("authToken") == null) {
+	window.location.href = "http://localhost:8080/view/login";
+}
+
 $(document).ready(function() {
 	var str = window.location.href;
 	var id = str.substring(str.lastIndexOf("=") + 1);
@@ -25,6 +29,16 @@ $(document).ready(function() {
 			$("#editTodoForm").submit(function(event) {
 				event.preventDefault();
 
+				if ($("#title").val().length < 3) {
+					alert("Title should be minimum of length 3");
+					return;
+				}
+
+				if ($("#description").val() < 3) {
+					alert("Description should be minimum of length 3");
+					return;
+				}
+
 				var formData = {
 					title: $("#title").val(),
 					description: $("#description").val(),
@@ -39,12 +53,13 @@ $(document).ready(function() {
 					headers: {
 						"Authorization": "Bearer " + authToken
 					},
-					success: function(response) {
+					success: function() {
 						window.location.href = "http://localhost:8080/view/dashboard";
 					},
 					error: function(err) {
 						alert(err.responseText)
 						if (err.status == 401) {
+							localStorage.removeItem("authToken");
 							window.location.href = "http://localhost:8080/view/login";
 						}
 						//console.error("Error updating todo:", err);
@@ -58,6 +73,7 @@ $(document).ready(function() {
 			console.log(err)
 			console.log(err.responseJSON.message)
 			if (err.status == 401) {
+				localStorage.removeItem("authToken");
 				window.location.href = "http://localhost:8080/view/login";
 			}
 		}
