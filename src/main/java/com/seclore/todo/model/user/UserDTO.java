@@ -1,28 +1,14 @@
-package com.seclore.todo.model;
+package com.seclore.todo.model.user;
 
-public class User {
-	private int id;
+public class UserDTO {
 	private String name, mobile, email, password;
-	
-	public User() {
-		// TODO Auto-generated constructor stub
-	}
 
-	public User(int id, String name, String mobile, String email, String password) {
+	public UserDTO(String name, String mobile, String email, String password) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.mobile = mobile;
 		this.email = email;
 		this.password = password;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -59,7 +45,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", mobile=" + mobile + ", email=" + email + ", password="
-				+ password + "]";
-	}	
+		return "UserDTO [name=" + name + ", mobile=" + mobile + ", email=" + email + ", password=" + password + "]";
+	}
+	
+	
 }

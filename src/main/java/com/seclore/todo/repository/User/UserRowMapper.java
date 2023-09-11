@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.seclore.todo.model.User;
+import com.seclore.todo.model.user.User;
 
 public class UserRowMapper implements RowMapper<User> {
 

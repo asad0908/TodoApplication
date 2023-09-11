@@ -3,7 +3,7 @@ package com.seclore.todo.service.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.seclore.todo.model.User;
+import com.seclore.todo.model.user.User;
 import com.seclore.todo.repository.User.UserRepositoryInterface;
 import com.seclore.todo.security.JWTUtil;
 

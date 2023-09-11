@@ -1,6 +1,9 @@
-package com.seclore.todo.model;
+package com.seclore.todo.model.usertodomapping;
 
 import java.util.List;
+
+import com.seclore.todo.model.todo.Todo;
+import com.seclore.todo.model.user.User;
 
 public class UserTodoMapping {
 	User user;

@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.seclore.todo.model.Todo;
+import com.seclore.todo.model.todo.Todo;
 
 public class TodoRowMapper implements RowMapper<Todo> {
 

@@ -1,9 +1,9 @@
-package com.seclore.todo.model;
+package com.seclore.todo.model.todo;
 
 public class Todo {
 	private int id;
 	private String title, description, status;
-	boolean deleted;
+	private boolean deleted;
 	
 	public Todo() {
 		// TODO Auto-generated constructor stub

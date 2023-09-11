@@ -2,7 +2,7 @@ package com.seclore.todo.service.Todo;
 
 import java.util.List;
 
-import com.seclore.todo.model.Todo;
+import com.seclore.todo.model.todo.Todo;
 
 public interface TodoServiceInterface {
 	public boolean createTodo(Todo todo, int userId);

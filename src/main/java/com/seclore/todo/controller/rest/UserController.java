@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.seclore.todo.model.User;
+import com.seclore.todo.model.user.User;
 import com.seclore.todo.service.User.UserServiceInterface;
 
 

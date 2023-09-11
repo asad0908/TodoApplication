@@ -1,7 +1,7 @@
 package com.seclore.todo.repository.Todo;
 
 
-import com.seclore.todo.model.Todo;
+import com.seclore.todo.model.todo.Todo;
 
 public interface TodoRepositoryInterface {
 	public boolean createTodo(Todo todo);

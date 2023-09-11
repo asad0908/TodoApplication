@@ -1,6 +1,6 @@
 package com.seclore.todo.repository.User;
 
-import com.seclore.todo.model.User;
+import com.seclore.todo.model.user.User;
 
 public interface UserRepositoryInterface {
 	public boolean createUser(User user);
