@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.seclore.todo.model.user.User;
+import com.seclore.todo.model.user.UserDTO;
 import com.seclore.todo.service.User.UserServiceInterface;
 
 
@@ -34,7 +35,7 @@ public class UserController {
      *         or an error message if user creation fails (HTTP 400 Bad Request).
      */
 	@PostMapping(value="", consumes=MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE)
-	ResponseEntity<String> createUser(@RequestBody User user) {
+	ResponseEntity<String> createUser(@RequestBody UserDTO user) {
 		boolean success = userService.createUser(user);
 		if(success) return new ResponseEntity<String>("User Created!", HttpStatus.CREATED);
 		return new ResponseEntity<String>("Failed to create user!", HttpStatus.BAD_REQUEST);

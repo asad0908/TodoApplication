@@ -2,6 +2,10 @@ package com.seclore.todo.model.user;
 
 public class UserDTO {
 	private String name, mobile, email, password;
+	
+	public UserDTO() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public UserDTO(String name, String mobile, String email, String password) {
 		super();
