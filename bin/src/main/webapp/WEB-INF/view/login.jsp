@@ -11,9 +11,6 @@
 	href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="/css/login.css">
-<link rel="stylesheet" type="text/css" href="/css/error.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-
 </head>
 <body>
 	<div class="loginpage__container">
@@ -51,13 +48,6 @@
 						Not a member? <span><a href="/view/signup">Signup Now</a></span>
 					</p>
 				</div>
-				<div class="alert hide">
-		         <span class="fas fa-exclamation-circle"></span>
-		         <span class="msg">Warning: This is a warning alert!</span>
-		         <div class="close-btn">
-		            <span class="fas fa-times"></span>
-		         </div>
-     		 	 </div>
 			</div>
 		</div>
 	</div>
