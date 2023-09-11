@@ -33,12 +33,12 @@
             </tr>
         </table>
         <div class="alert hide">
-		         <span class="fas fa-exclamation-circle"></span>
-		         <span class="msg">Warning: This is a warning alert!</span>
-		         <div class="close-btn">
-		            <span class="fas fa-times"></span>
-		         </div>
-     		 	 </div>
+         <span class="fas fa-exclamation-circle"></span>
+         <span class="msg">Warning: This is a warning alert!</span>
+         <div class="close-btn">
+            <span class="fas fa-times"></span>
+         </div>
+   		</div>
     </div>
 
     <script src="/js/dashboard.js"></script>

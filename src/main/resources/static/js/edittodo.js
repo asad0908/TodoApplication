@@ -31,12 +31,38 @@ $(document).ready(function() {
 				event.preventDefault();
 
 				if ($("#title").val().length < 3) {
-					alert("Title should be minimum of length 3");
+					$('.msg').text("Description should be minimum of length 3");
+					$('.alert').addClass("show");
+					$('.alert').removeClass("hide");
+					$('.alert').addClass("showAlert");
+		
+					setTimeout(function() {
+						$('.alert').removeClass("show");
+						$('.alert').addClass("hide");
+					}, 5000);
+		
+					$('.close-btn').click(function() {
+						$('.alert').removeClass("show");
+						$('.alert').addClass("hide");
+					});
 					return;
 				}
 
 				if ($("#description").val() < 3) {
-					alert("Description should be minimum of length 3");
+					$('.msg').text("Description should be minimum of length 3");
+					$('.alert').addClass("show");
+					$('.alert').removeClass("hide");
+					$('.alert').addClass("showAlert");
+		
+					setTimeout(function() {
+						$('.alert').removeClass("show");
+						$('.alert').addClass("hide");
+					}, 5000);
+		
+					$('.close-btn').click(function() {
+						$('.alert').removeClass("show");
+						$('.alert').addClass("hide");
+					});
 					return;
 				}
 
@@ -58,20 +84,25 @@ $(document).ready(function() {
 						window.location.href = "http://localhost:8080/view/dashboard";
 					},
 					error: function(err) {
-						console.error("Error fetching todo data:", err);
-						alert(err.responseJSON.message + "Login Again")
-						//if (err.status == 401) {
-						localStorage.removeItem("authToken");
-						window.location.href = "http://localhost:8080/view/login";
-						//}
-						//console.error("Error updating todo:", err);
+						$('.msg').text(err.responseJSON.message);
+						$('.alert').addClass("show");
+						$('.alert').removeClass("hide");
+						$('.alert').addClass("showAlert");
+			
+						setTimeout(function() {
+							$('.alert').removeClass("show");
+							$('.alert').addClass("hide");
+						}, 5000);
+			
+						$('.close-btn').click(function() {
+							$('.alert').removeClass("show");
+							$('.alert').addClass("hide");
+						});
 					}
 				});
 			});
 		},
 		error: function(err) {
-			console.error("Error fetching todo data:", err);
-			alert(err.responseJSON.message + "Login Again")
 			//if (err.status == 401) {
 			localStorage.removeItem("authToken");
 			window.location.href = "http://localhost:8080/view/login";

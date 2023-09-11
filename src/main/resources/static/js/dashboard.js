@@ -26,24 +26,22 @@ function getDataWithToken() {
 			console.log("Data received:", data);
 			renderData(data);
 		},
-		error: function(err) {
-				$('.msg').text(err.responseText); 
-				  $('.alert').addClass("show");
-				  $('.alert').removeClass("hide");
-				  $('.alert').addClass("showAlert");
-				  
-				  setTimeout(function(){
-				    $('.alert').removeClass("show");
-				    $('.alert').addClass("hide");
-				  }, 5000);
-				  
-				  $('.close-btn').click(function(){
-				    $('.alert').removeClass("show");
-				    $('.alert').addClass("hide");
-				}
-			alert(err.responseJSON.messsage);
-		}
+						error: function(err) {
+					$('.msg').text(err.responseJSON.message);
+					$('.alert').addClass("show");
+					$('.alert').removeClass("hide");
+					$('.alert').addClass("showAlert");
 
+					setTimeout(function() {
+						$('.alert').removeClass("show");
+						$('.alert').addClass("hide");
+					}, 5000);
+
+					$('.close-btn').click(function() {
+						$('.alert').removeClass("show");
+						$('.alert').addClass("hide");
+					});
+				}
 	});
 }
 
@@ -103,9 +101,24 @@ $(document).ready(function() {
             success: function() {
 				window.location.href = "http://localhost:8080/view/dashboard";
             },
+          
+            
             error: function(err) {
-                console.error("Error deleting todo:", err);
-            }
+					$('.msg').text(err.responseJSON.message);
+					$('.alert').addClass("show");
+					$('.alert').removeClass("hide");
+					$('.alert').addClass("showAlert");
+
+					setTimeout(function() {
+						$('.alert').removeClass("show");
+						$('.alert').addClass("hide");
+					}, 5000);
+
+					$('.close-btn').click(function() {
+						$('.alert').removeClass("show");
+						$('.alert').addClass("hide");
+					});
+				}
         });
     });
 });

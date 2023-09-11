@@ -25,10 +25,7 @@ $(document).ready(function() {
 				window.location.href = "http://localhost:8080/view/dashboard";
 			},
 			error: function(err) {
-
-				console.log("Error:")
-				console.log(err)
-				$('.msg').text(err.responseText);
+				$('.msg').text(err.responseJSON.message);
 				$('.alert').addClass("show");
 				$('.alert').removeClass("hide");
 				$('.alert').addClass("showAlert");
@@ -42,9 +39,6 @@ $(document).ready(function() {
 					$('.alert').removeClass("show");
 					$('.alert').addClass("hide");
 				});
-				console.error("Login error: my login faileed", err);
-				alert(err.responseJSON.message)
-
 			}
 		});
 	});
