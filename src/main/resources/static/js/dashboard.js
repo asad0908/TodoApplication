@@ -41,6 +41,9 @@ function getDataWithToken() {
 				    $('.alert').removeClass("show");
 				    $('.alert').addClass("hide");
 				}
+			alert(err.responseJSON.messsage);
+		}
+
 	});
 }
 

@@ -44,6 +44,7 @@ $(document).ready(function() {
                     console.log("Data posted successfully:", response);
                     window.location.href = "http://localhost:8080/view/login";
                 },
+
                 
 			  error: function(err) {
 				 console.log(err)
@@ -62,6 +63,9 @@ $(document).ready(function() {
 				    $('.alert').addClass("hide");
 				  });
 }
+                error: function(err) {
+    				alert(err.responseJSON.message);
+			  }
 
             });
         }

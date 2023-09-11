@@ -22,6 +22,7 @@ $(document).ready(function() {
 			"Authorization": "Bearer " + authToken
 		},
 		success: function(response) {
+			console.log(response)
 			$("#title").val(response.title);
 			$("#description").val(response.description);
 			$("#status").val(response.status);
@@ -57,25 +58,24 @@ $(document).ready(function() {
 						window.location.href = "http://localhost:8080/view/dashboard";
 					},
 					error: function(err) {
-						alert(err.responseText)
-						if (err.status == 401) {
-							localStorage.removeItem("authToken");
-							window.location.href = "http://localhost:8080/view/login";
-						}
+						console.error("Error fetching todo data:", err);
+						alert(err.responseJSON.message + "Login Again")
+						//if (err.status == 401) {
+						localStorage.removeItem("authToken");
+						window.location.href = "http://localhost:8080/view/login";
+						//}
 						//console.error("Error updating todo:", err);
 					}
 				});
 			});
 		},
 		error: function(err) {
-			//console.error("Error fetching todo data:", err);
+			console.error("Error fetching todo data:", err);
 			alert(err.responseJSON.message + "Login Again")
-			console.log(err)
-			console.log(err.responseJSON.message)
-			if (err.status == 401) {
-				localStorage.removeItem("authToken");
-				window.location.href = "http://localhost:8080/view/login";
-			}
+			//if (err.status == 401) {
+			localStorage.removeItem("authToken");
+			window.location.href = "http://localhost:8080/view/login";
+			//}
 		}
 	});
 });
