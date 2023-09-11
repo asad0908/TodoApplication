@@ -1,6 +1,5 @@
 package com.seclore.main.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -8,43 +7,37 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
+/**
+ * The SecurityConfig class is a configuration class responsible for setting up security configurations
+ * for the application. It uses Spring Security annotations to configure web security.
+ *
+ * @Configuration Indicates that this class is a configuration class that provides bean definitions
+ *               and application context configuration.
+ * @EnableWebSecurity Enables Spring Security for the application.
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-	@Autowired
-	private CustomAuthenticationProvider authenticationProvider;
-//	@Autowired
-//	private JwtAuthenticationFilter jwtAuthFilter;
 
-//	@Autowired
-//    public void AuthenticationProvider(AuthenticationProvider authenticationProvider){
-//        this.authenticationProvider=authenticationProvider;
-//    }
 	public SecurityConfig() {
 		System.out.println("Security config class created!");
 	}
 
+	/**
+     * Defines a security filter chain for handling HTTP security configurations.
+     *
+     * @param http The HttpSecurity object used to configure security settings.
+     * @return A SecurityFilterChain instance that defines the security configuration for the application.
+     * @throws Exception If there is an error while configuring security settings.
+     */
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		System.out.println("Security filter chain called");
 
 		http
-		.csrf()
-			.disable()
-		
-//		.and()
-		.sessionManagement()
-			.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-		.and()
-		.authenticationProvider(authenticationProvider)
-//		.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-//		.and()
-		.authorizeHttpRequests()
-		.antMatchers("/api/user/**", "**.css", "**.js")
-			.permitAll();
-//		.anyRequest()
-//			.authenticated()
-//            .httpBasic();
+			.csrf().disable()
+			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
 		return http.build();
 	}
 

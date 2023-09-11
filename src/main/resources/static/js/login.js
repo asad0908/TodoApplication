@@ -1,7 +1,8 @@
+/*
 if (localStorage.getItem("authToken") != null) {
 	window.location.href = "http://localhost:8080/view/dashboard";
 }
-
+*/
 
 $(document).ready(function() {
 	$("#loginForm").submit(function(event) {
