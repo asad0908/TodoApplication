@@ -86,6 +86,7 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(CAuthenticationException.class)
 	public ResponseEntity<ErrorDTO> customAuthenticationExceptionHandler(CAuthenticationException e) {
 		System.out.println("Invalid creds");
+		e.printStackTrace();
 		String message = e.getMessage();
 		return new ResponseEntity<ErrorDTO>(new ErrorDTO(HttpStatus.UNAUTHORIZED, message), HttpStatus.UNAUTHORIZED);
 	}

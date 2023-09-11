@@ -17,6 +17,7 @@ import com.auth0.jwt.interfaces.DecodedJWT;
  * The JWTUtil class provides utility methods for creating and validating JSON Web Tokens (JWTs).
  * It uses a secret key to sign and verify tokens.
  */
+
 @Component
 public class JWTUtil {
 

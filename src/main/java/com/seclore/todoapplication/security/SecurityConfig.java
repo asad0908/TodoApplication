@@ -40,6 +40,12 @@ public class SecurityConfig {
 
 		return http.build();
 	}
+	
+	@Bean
+	JWTUtil jwtUtil() {
+		System.out.println("herheeeeeeeeeeee");
+		return new JWTUtil();
+	}
 
 }
 
