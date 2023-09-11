@@ -46,7 +46,7 @@ $("#createTodoForm").submit(function(event) {
 			window.location.href = "/view/dashboard"; // Change the URL as per your requirement
 		},
 		error: function(err) {
-			console.error("Error creating todo:", err);
+			alert(err.responseJSON.message);
 		}
 	});
 });

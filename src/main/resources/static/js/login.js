@@ -19,14 +19,14 @@ $(document).ready(function() {
 			contentType: "application/json",
 			success: function(response) {
 				console.log("Login Successful:", response);
-				var authToken = response;
+				var authToken = response.token;
 				localStorage.setItem("authToken", authToken);
 				console.log("Token: ", authToken);
 				window.location.href = "http://localhost:8080/view/dashboard";
 			},
 			error: function(err) {
 				console.error("Login error: my login faileed", err);
-				alert(err.responseText)
+				alert(err.responseJSON.message)
 			}
 		});
 	});

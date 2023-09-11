@@ -127,6 +127,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 			json = objectMapper.writeValueAsString(new ErrorDTO(HttpStatus.UNAUTHORIZED, message));
 			response.getWriter().write(json);
 			response.setContentType("application/json");
+			response.setStatus(401);
 		} catch (IOException e) {
 			System.out.println("Error in creating JSON");
 			e.printStackTrace();

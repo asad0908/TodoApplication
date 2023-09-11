@@ -27,7 +27,7 @@ function getDataWithToken() {
 			renderData(data);
 		},
 		error: function(err) {
-			console.error("Error fetching data:", err);
+			alert(err.responseJSON.messsage);
 		}
 	});
 }

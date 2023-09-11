@@ -31,7 +31,7 @@ $(document).ready(function() {
                     window.location.href = "http://localhost:8080/view/login";
                 },
                 error: function(err) {
-    				alert(err.responseText)
+    				alert(err.responseJSON.message);
 			  }
             });
         }
